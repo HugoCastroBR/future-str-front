@@ -15,7 +15,7 @@ const config = {
   ],
   prefix: "",
   theme: {
-    
+
     container: {
       center: true,
       padding: "2rem",
@@ -24,6 +24,9 @@ const config = {
       },
     },
     extend: {
+      "animation": {
+        shimmer: "shimmer 2s linear infinite"
+      },
       keyframes: {
         move: {
           "0%": { transform: "translateX(-200px)" },
@@ -37,6 +40,14 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        }
       },
       colors: {
         border: "hsl(var(--border))",
@@ -45,19 +56,19 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         "ebony-clay": {
-              DEFAULT: "#1F2335",
-              50: "#CDD1E2",
-              100: "#C0C5DA",
-              200: "#A6ADCB",
-              300: "#8D95BC",
-              400: "#737EAD",
-              500: "#5B679C",
-              600: "#4C5682",
-              700: "#3D4568",
-              800: "#2E344F",
-              900: "#1F2335",
-              950: "#151723",
-            },
+          DEFAULT: "#1F2335",
+          50: "#CDD1E2",
+          100: "#C0C5DA",
+          200: "#A6ADCB",
+          300: "#8D95BC",
+          400: "#737EAD",
+          500: "#5B679C",
+          600: "#4C5682",
+          700: "#3D4568",
+          800: "#2E344F",
+          900: "#1F2335",
+          950: "#151723",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -94,7 +105,7 @@ const config = {
       },
     },
   },
-  plugins: [addVariablesForColors,require("tailwindcss-animate")],
+  plugins: [addVariablesForColors, require("tailwindcss-animate")],
 } satisfies Config
 
 function addVariablesForColors({ addBase, theme }: any) {
@@ -102,7 +113,7 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });

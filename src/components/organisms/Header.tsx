@@ -13,11 +13,13 @@ function Header() {
       bg-opacity-95 backdrop-blur-sm shadow-lg 
       '
     >
-      <div>
+      <div 
+        className='flex items-center w-1/3 h-full '
+      >
         <Logo/>
       </div>
       <div
-        className='flex gap-12'
+        className='flex gap-12 items-center w-1/3 h-full justify-center'
       >
         <LinkButton
           text='NEW'
@@ -39,18 +41,22 @@ function Header() {
           textColor='white'
           underlineColor='white'
         />
-
-
       </div>
       <div
-        className='flex gap-4'
+        className='flex gap-4 items-center w-1/3 h-full justify-end'
       >
         <SearchInput/> 
-        <ShoppingCart/>
-        <UserCircle/>
+        <ShoppingCart
+          color='white'
+        />
+        <UserCircle
+          color='white'
+        />
       </div>
     </header>
   )
 }
 
 export default Header
+
+
